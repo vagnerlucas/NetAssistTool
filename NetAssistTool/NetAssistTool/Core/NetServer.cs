@@ -14,6 +14,7 @@ namespace NetAssistTool.Core
         private Socket server;
         private Thread workerThread;
         private string last_message;
+        private static int DEFAULT_PORT = 666;
 
         public bool IsRunning()
         {
@@ -24,7 +25,7 @@ namespace NetAssistTool.Core
         {
 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            server.Bind(new IPEndPoint(IPAddress.Any, 666));
+            server.Bind(new IPEndPoint(IPAddress.Any, DEFAULT_PORT));
 
             workerThread = new Thread(ServerWorker);
         }
